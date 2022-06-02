@@ -2,7 +2,7 @@ public class Teen_User extends User {
     
     public boolean canBeAdmin;
 
-    Teen_User(String name, String sex, int age, String nickname, String password){
+    Teen_User(String name, String sex, int age, String nickname, String password) throws Exception {
 
         super(name, sex, age, nickname, password);
         
