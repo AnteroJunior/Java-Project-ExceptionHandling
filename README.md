@@ -8,6 +8,7 @@
     - showMyFeed();<br>
     - seeFriendRequest();<br>
     - changeFeedVisibility();<br>
+    - deleteAccount(); <br>
     
 ### 2. Large class<br>
   2.1. Iface.java<br>
