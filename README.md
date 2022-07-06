@@ -1,4 +1,18 @@
 ## Code Smells
+
+### Refactoring methods
+<hr>
+1. Long Method<br>
+O método consertado foi o deleteAccount() presente em User.java. Para consertar o método, eu criei outros dois métodos: deleteFriends() e 
+deleteGroups(). Fazendo isso, pude simplificar o método deleteAccount().
+
+2. Long Method<br>
+O code smell resolvido estava na classe Community e era no método seeRequest, onde tinham várias funções no mesmo métodos.
+Para resolver, foram criados mais dois métodos: requestAction(), que passa pela lista de solicitações, e addMember(), 
+que, como o próprio nome sugere, adiciona um usuário à lista de membros da comunidade.
+
+<hr>
+<br>
 ### 1. Long Method
   1.1. Community.java<br>
     - showFeed();<br>
