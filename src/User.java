@@ -234,6 +234,15 @@ public class User extends Person {
     public void deleteAccount(ArrayList<Community> groups){
 
         //Delete friends
+        deleteFriends();
+
+        //Delete groups
+        deleteGroups(groups);
+
+    }
+
+    public void deleteFriends(){
+
         for(User friend : this.friends){
 
             friend.friends.remove(this);
@@ -241,24 +250,23 @@ public class User extends Person {
 
         }
 
-        //Delete groups
+    }
+
+    public void deleteGroups(ArrayList<Community> list){
+
         for(Community group : this.groups){
 
             //User is admin
             if(group.admin.equals(this)){
 
                 for(int i = 0; i < group.members.size(); i++){
-
                     group.members.remove(i);
-
                 }
 
                 groups.remove(group);
 
             } else {
-
                 group.members.remove(this);
-
             }
 
         }
