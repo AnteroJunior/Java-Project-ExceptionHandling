@@ -29,11 +29,7 @@ public class Community {
 
             System.out.println("--------------------");
 
-            System.out.println("Author: " + post.author.nickname +
-            "\nPost: " + post.text + 
-            "\nDate: " + post.date +
-            "\n" +
-            "\nLikes: " + post.likes);
+            System.out.println(post);
 
             System.out.println("Like button: (1: YES; 0: NO)");
             Scanner scanner = new Scanner(System.in);
@@ -69,37 +65,48 @@ public class Community {
 
         if(this.admin.equals(admin)){
 
-            for(int i = 0; i < this.members_request.size(); i++){
-
-                User member = this.members_request.get(i);
-
-                System.out.println(member.nickname + " wants to join. Accept new member? (1: YES; 0: NO)");
-
-                Scanner scanner = new Scanner(System.in);
-                int option = scanner.nextInt();
-
-                if(option == 1){
-
-                    System.out.println("Member added.");
-
-                    this.members.add(member);
-                    this.members_request.remove(member);
-                    member.groups.add(this);
-
-                } else if(option == 0){
-
-                    System.out.println("Member not added.");
-                    this.members_request.remove(member);
-
-                }
-
-            }
+            requestAction();
 
         } else {
 
             System.out.println("Only admin can see.");
 
         }
+
+    }
+
+    public void requestAction(){
+
+        for(int i = 0; i < this.members_request.size(); i++){
+
+            User member = this.members_request.get(i);
+
+            System.out.println(member.nickname + " wants to join. Accept new member? (1: YES; 0: NO)");
+
+            Scanner scanner = new Scanner(System.in);
+            int option = scanner.nextInt();
+
+            if(option == 1){
+                
+                addMember(member);
+                
+
+            } else if(option == 0){
+                
+                this.members_request.remove(member);
+                System.out.println("Member not added.");
+            }
+
+        }
+
+    }
+
+    public void addMember(User newMember){
+
+        this.members.add(newMember);
+        this.members_request.remove(newMember);
+        newMember.groups.add(this);
+        System.out.println("Member added.");
 
     }
 
